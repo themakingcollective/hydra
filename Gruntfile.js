@@ -1,23 +1,29 @@
 /* jshint node:true */
-'use strict';
+"use strict";
 
 module.exports = function (grunt) {
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks("grunt-contrib-jshint");
+  grunt.loadNpmTasks("grunt-contrib-jasmine");
 
   grunt.initConfig({
     jshint: {
-      options: { jshintrc: true },
-      all: ['Gruntfile.js', 'app/**/*.js', 'spec/**/*.js']
+      all: [
+        "Gruntfile.js",
+        "app/**/*.js",
+        "spec/**/*.js"
+      ],
+      options: {
+        jshintrc: true
+      }
     },
     jasmine: {
+      src: "app/**/*.js",
       options: {
-        specs: 'spec/**/*Spec.js',
-        outfile: '.jasmine.html'
-      },
-      src: 'app/**/*.js'
+        specs: "spec/**/*Spec.js",
+        outfile: ".jasmine.html"
+      }
     }
   });
 
-  grunt.registerTask('default', ['jasmine', 'jshint']);
+  grunt.registerTask("default", ["jasmine", "jshint"]);
 };
