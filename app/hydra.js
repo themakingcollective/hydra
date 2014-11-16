@@ -1,14 +1,9 @@
 /* exported Hydra */
-var Hydra = {};
-
-Hydra.View       = function () {};
-Hydra.Model      = function () {};
-Hydra.Controller = function () {};
-
-Hydra.Adapters = {};
-Hydra.Ports    = {};
+var Hydra = { Ports: {}, Adapters: {} };
 
 Hydra.Application = function () {
+  "use strict";
+
   var view       = new Hydra.View();
   var model      = new Hydra.Model(view);
   var controller = new Hydra.Controller(model);
