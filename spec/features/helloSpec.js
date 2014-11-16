@@ -10,7 +10,7 @@ feature("Greeting users", function () {
   });
 
   scenario("Seeing 'Hello, world' after pressing a button", function () {
-    expect(mockGUI.text()).toNotEqual("Hello, world");
+    expect(mockGUI.text()).toEqual("");
     mockGUI.pressButton();
     expect(mockGUI.text()).toEqual("Hello, world");
   });
