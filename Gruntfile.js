@@ -20,7 +20,8 @@ module.exports = function (grunt) {
       src: "app/**/*.js",
       options: {
         specs: "spec/**/*Spec.js",
-        outfile: ".jasmine.html"
+        outfile: ".jasmine.html",
+        helpers: "spec/support/**/*.js"
       }
     }
   });
