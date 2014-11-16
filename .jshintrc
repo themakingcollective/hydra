@@ -4,7 +4,10 @@
     "feature":    true,
     "context":    true,
     "background": true,
-    "scenario":   true
+    "scenario":   true,
+
+    // do this better
+    "setupApplication": true
   },
 
   // Enforcing options:

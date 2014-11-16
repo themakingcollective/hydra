@@ -1,18 +1,16 @@
 feature("Greeting users", function () {
   "use strict";
 
-  var mockGUI;
+  var gui;
 
   background(function () {
-    var app = new Hydra.Application();
-    mockGUI = new Hydra.Adapters.MockGUI();
-    app.connectPort("user", mockGUI);
+    gui = setupApplication();
   });
 
   scenario("Seeing 'Hello, world' after pressing a button", function () {
-    expect(mockGUI.text()).toEqual("");
-    mockGUI.pressButton();
-    expect(mockGUI.text()).toEqual("Hello, world");
+    expect(gui.text()).toEqual("");
+    gui.pressButton();
+    expect(gui.text()).toEqual("Hello, world");
   });
 
 });
