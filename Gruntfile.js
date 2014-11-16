@@ -8,14 +8,14 @@ module.exports = function (grunt) {
   grunt.initConfig({
     jshint: {
       options: { jshintrc: true },
-      all: ['Gruntfile.js', 'lib/**/*.js', 'spec/**/*.js']
+      all: ['Gruntfile.js', 'app/**/*.js', 'spec/**/*.js']
     },
     jasmine: {
       options: {
         specs: 'spec/**/*Spec.js',
         outfile: '.jasmine.html'
       },
-      src: 'lib/**/*.js'
+      src: 'app/**/*.js'
     }
   });
 
