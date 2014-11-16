@@ -1,4 +1,6 @@
 {
+  "globals" : { "Hydra": true },
+
   // Enforcing options:
   "bitwise"              : true,
   "camelcase"            : true,
@@ -46,6 +48,7 @@
   "noyield"              : false,
 
   // Environment options:
+  "jasmine"              : true,
   "browser"              : false,
   "couch"                : false,
   "devel"                : false,
