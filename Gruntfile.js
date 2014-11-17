@@ -21,7 +21,7 @@ module.exports = function (grunt) {
       options: {
         specs: "spec/**/*Spec.js",
         outfile: ".jasmine.html",
-        helpers: "spec/support/**/*.js"
+        helpers: "spec/specHelper.js"
       }
     }
   });

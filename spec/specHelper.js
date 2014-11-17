@@ -1,6 +1,13 @@
 /* jshint unused: false */
 
-var setupApplication = function () {
+var feature    = describe;
+var context    = describe;
+var background = beforeEach;
+var scenario   = it;
+
+var Helpers = {};
+
+Helpers.setupApplication = function () {
   "use strict";
 
   var app = new Hydra.Application();

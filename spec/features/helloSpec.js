@@ -1,10 +1,12 @@
+/* global Helpers */
+
 feature("Greeting users", function () {
   "use strict";
 
   var gui;
 
   background(function () {
-    gui = setupApplication();
+    gui = Helpers.setupApplication();
   });
 
   scenario("Seeing 'Hello, world' after pressing a button", function () {

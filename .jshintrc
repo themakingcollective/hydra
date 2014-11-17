@@ -4,10 +4,7 @@
     "feature":    true,
     "context":    true,
     "background": true,
-    "scenario":   true,
-
-    // do this better
-    "setupApplication": true
+    "scenario":   true
   },
 
   // Enforcing options:
