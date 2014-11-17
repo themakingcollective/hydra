@@ -13,6 +13,8 @@ feature("Greeting users", function () {
     expect(gui.text()).toEqual("");
     gui.pressButton();
     expect(gui.text()).toEqual("Hello, world");
+    gui.pressButton();
+    expect(gui.text()).toEqual("2 times");
   });
 
 });
