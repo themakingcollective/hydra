@@ -1,6 +1,6 @@
 "use strict";
 
-Hydra.Ports.User = function (view, controller) {
+module.exports = function (view, controller) {
   this.text = function () {
     return view.text;
   };

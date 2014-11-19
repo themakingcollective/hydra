@@ -1,12 +1,12 @@
 "use strict";
 
-var Helpers = require("../specHelper");
+var helpers = require("../specHelper");
 
 feature("Greeting users", function () {
   var gui;
 
   background(function () {
-    gui = Helpers.setupApplication();
+    gui = helpers.setupApplication();
   });
 
   scenario("Seeing 'Hello, world' after pressing a button", function () {

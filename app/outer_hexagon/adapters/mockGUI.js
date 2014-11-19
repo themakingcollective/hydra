@@ -1,6 +1,6 @@
 "use strict";
 
-Hydra.Adapters.MockGUI = function () {
+module.exports = function () {
   this.text = function () {
     return this.port.text();
   };

@@ -1,5 +1,5 @@
 "use strict";
 
-Hydra.View = function () {
+module.exports = function () {
   this.text = "";
 };

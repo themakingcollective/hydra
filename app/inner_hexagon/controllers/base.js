@@ -1,6 +1,6 @@
 "use strict";
 
-Hydra.Controller = function (model) {
+module.exports = function (model) {
   this.pressButton = function () {
     model.increment();
   };

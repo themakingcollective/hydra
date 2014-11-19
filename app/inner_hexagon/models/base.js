@@ -1,6 +1,6 @@
 "use strict";
 
-Hydra.Model = function (view) {
+module.exports = function (view) {
   var count = 0;
 
   this.increment = function () {
