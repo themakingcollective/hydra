@@ -2,7 +2,6 @@
 
 module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-jshint");
-  grunt.loadNpmTasks("grunt-contrib-jasmine");
 
   grunt.initConfig({
     jshint: {
@@ -14,16 +13,8 @@ module.exports = function (grunt) {
       options: {
         jshintrc: true
       }
-    },
-    jasmine: {
-      src: "app/**/*.js",
-      options: {
-        specs: "spec/**/*Spec.js",
-        outfile: ".jasmine.html",
-        helpers: "spec/specHelper.js"
-      }
     }
   });
 
-  grunt.registerTask("default", ["jasmine", "jshint"]);
+  grunt.registerTask("default", ["jshint"]);
 };
