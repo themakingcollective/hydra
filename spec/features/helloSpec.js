@@ -1,8 +1,7 @@
 /* global Helpers */
+"use strict";
 
 feature("Greeting users", function () {
-  "use strict";
-
   var gui;
 
   background(function () {

@@ -1,9 +1,9 @@
 /* exported Hydra */
+"use strict";
+
 var Hydra = { Ports: {}, Adapters: {} };
 
 Hydra.Application = function () {
-  "use strict";
-
   var view       = new Hydra.View();
   var model      = new Hydra.Model(view);
   var controller = new Hydra.Controller(model);

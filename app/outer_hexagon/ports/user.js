@@ -1,6 +1,6 @@
-Hydra.Ports.User = function (view, controller) {
-  "use strict";
+"use strict";
 
+Hydra.Ports.User = function (view, controller) {
   this.text = function () {
     return view.text;
   };

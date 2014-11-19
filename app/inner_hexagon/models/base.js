@@ -1,5 +1,6 @@
+"use strict";
+
 Hydra.Model = function (view) {
-  "use strict";
   var count = 0;
 
   this.increment = function () {

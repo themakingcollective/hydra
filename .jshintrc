@@ -54,6 +54,7 @@
   "noyield"              : false,
 
   // Environment options:
+  "node"                 : true,
   "jasmine"              : true,
   "browser"              : false,
   "couch"                : false,
@@ -61,7 +62,6 @@
   "dojo"                 : false,
   "jquery"               : false,
   "mootools"             : false,
-  "node"                 : false,
   "nonstandard"          : false,
   "phantom"              : false,
   "prototypejs"          : false,

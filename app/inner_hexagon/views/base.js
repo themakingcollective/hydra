@@ -1,5 +1,5 @@
-Hydra.View = function () {
-  "use strict";
+"use strict";
 
+Hydra.View = function () {
   this.text = "";
 };

@@ -1,4 +1,5 @@
 /* jshint unused: false */
+"use strict";
 
 var feature    = describe;
 var context    = describe;
@@ -8,8 +9,6 @@ var scenario   = it;
 var Helpers = {};
 
 Helpers.setupApplication = function () {
-  "use strict";
-
   var app = new Hydra.Application();
   var gui = new Hydra.Adapters.MockGUI();
 

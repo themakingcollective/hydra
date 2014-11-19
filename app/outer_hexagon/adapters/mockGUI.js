@@ -1,6 +1,6 @@
-Hydra.Adapters.MockGUI = function () {
-  "use strict";
+"use strict";
 
+Hydra.Adapters.MockGUI = function () {
   this.text = function () {
     return this.port.text();
   };
