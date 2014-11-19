@@ -1,14 +1,11 @@
-/* jshint unused: false */
 "use strict";
 
-var feature    = describe;
-var context    = describe;
-var background = beforeEach;
-var scenario   = it;
+global.feature    = describe;
+global.context    = describe;
+global.background = beforeEach;
+global.scenario   = it;
 
-var Helpers = {};
-
-Helpers.setupApplication = function () {
+module.exports.setupApplication = function () {
   var app = new Hydra.Application();
   var gui = new Hydra.Adapters.MockGUI();
 

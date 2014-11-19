@@ -1,5 +1,6 @@
-/* global Helpers */
 "use strict";
+
+var Helpers = require("../specHelper");
 
 feature("Greeting users", function () {
   var gui;
