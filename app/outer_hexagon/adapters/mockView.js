@@ -1,11 +1,13 @@
 "use strict";
 
 module.exports = function () {
-  this.text = function () {
-    return this.port.text();
-  };
+  this.text = "";
 
   this.pressButton = function () {
     this.port.pressButton();
+  };
+
+  this.setText = function (text) {
+    this.text = text;
   };
 };

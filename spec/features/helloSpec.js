@@ -3,18 +3,18 @@
 var helpers = require("../specHelper");
 
 feature("Greeting users", function () {
-  var gui;
+  var view;
 
   background(function () {
-    gui = helpers.setupApplication();
+    view = helpers.setupApplication();
   });
 
   scenario("Seeing 'Hello, world' after pressing a button", function () {
-    expect(gui.text()).toEqual("");
-    gui.pressButton();
-    expect(gui.text()).toEqual("Hello, world");
-    gui.pressButton();
-    expect(gui.text()).toEqual("2 times");
+    expect(view.text).toEqual("");
+    view.pressButton();
+    expect(view.text).toEqual("Hello, world");
+    view.pressButton();
+    expect(view.text).toEqual("2 times");
   });
 
 });

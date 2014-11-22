@@ -7,10 +7,10 @@ global.background = beforeEach;
 global.scenario   = it;
 
 module.exports.setupApplication = function () {
-  var app = new Hydra();
-  var gui = new Hydra.Adapters.MockGUI();
+  var app  = new Hydra();
+  var view = new Hydra.Adapters.MockView();
 
-  app.connectPort("user", gui);
+  app.connectPort("view", view);
 
-  return gui;
+  return view;
 };

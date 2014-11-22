@@ -1,23 +1,26 @@
 "use strict";
 
-var Model      = require("./inner_hexagon/models/base");
-var View       = require("./inner_hexagon/views/base");
-var Controller = require("./inner_hexagon/controllers/base");
-var UserPort   = require("./outer_hexagon/ports/user");
-var MockGUI    = require("./outer_hexagon/adapters/mockGUI");
+var Model      = require("./inner_hexagon/model");
+var View       = require("./outer_hexagon/ports/view");
+var Controller = require("./inner_hexagon/controller");
+var MockView   = require("./outer_hexagon/adapters/mockView");
 
 module.exports = function () {
-  var view       = new View();
-  var model      = new Model(view);
-  var controller = new Controller(model);
+  var model       = new Model();
+  var view        = new View();
+  var controller  = new Controller(model, view);
+  view.controller = controller;
 
   var ports = {
-    "user": new UserPort(view, controller)
+    view: view
   };
 
   this.connectPort = function (portName, adapter) {
-    adapter.port = ports[portName];
+    var port = ports[portName];
+
+    adapter.port = port;
+    port.adapter = adapter;
   };
 };
 
-module.exports.Adapters = { MockGUI: MockGUI };
+module.exports.Adapters = { MockView: MockView };
