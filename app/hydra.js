@@ -1,9 +1,10 @@
 "use strict";
 
-var Model      = require("./inner_hexagon/model");
-var View       = require("./outer_hexagon/ports/view");
-var Controller = require("./inner_hexagon/controller");
-var MockView   = require("./outer_hexagon/adapters/mockView");
+var Model        = require("./inner_hexagon/model");
+var View         = require("./outer_hexagon/ports/view");
+var Controller   = require("./inner_hexagon/controller");
+var MockView     = require("./outer_hexagon/adapters/mockView");
+var TitaniumView = require("./outer_hexagon/adapters/titaniumView");
 
 module.exports = function () {
   var model       = new Model();
@@ -23,4 +24,7 @@ module.exports = function () {
   };
 };
 
-module.exports.Adapters = { MockView: MockView };
+module.exports.Adapters = {
+  MockView: MockView,
+  TitaniumView: TitaniumView
+};
