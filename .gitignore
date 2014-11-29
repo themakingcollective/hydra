@@ -1,3 +1,7 @@
 node_modules
 .jasmine.html
 build
+screenshot*
+test_servers
+.calabash_settings
+.d8_history
