@@ -13,6 +13,10 @@ if ENV['PLATFORM'] == 'android'
   After do |scenario|
     shutdown_test_server
   end
+
+  def expression(accessibility_label)
+    "* contentDescription:'#{accessibility_label}.'"
+  end
 else
   require 'calabash-cucumber/operations'
   require 'calabash-cucumber/launcher'
@@ -33,5 +37,9 @@ else
   at_exit do
     launcher = Calabash::Cucumber::Launcher.new
     Calabash::Cucumber::SimulatorHelper.stop if launcher.simulator_target?
+  end
+
+  def expression(accessibility_label)
+    "* marked:'#{accessibility_label}'"
   end
 end

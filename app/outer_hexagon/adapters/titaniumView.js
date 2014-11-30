@@ -16,7 +16,7 @@ module.exports = function () {
     textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
     top: 30,
     width: Ti.UI.SIZE, height: Ti.UI.SIZE,
-    accessibilityLabel: "foo"
+    accessibilityLabel: "someLabel"
   });
 
   var button = Ti.UI.createButton({
@@ -24,7 +24,7 @@ module.exports = function () {
     top: 10,
     width: 100,
     height: 50,
-    accessibilityLabel: "bar"
+    accessibilityLabel: "someButton"
   });
 
   button.addEventListener("touchstart", function () {

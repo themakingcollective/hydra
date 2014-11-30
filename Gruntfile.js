@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         command: [
           "rm -rf build",
           "ti build --platform ios s --build-only",
-          "ti calabash --platform ios"
+          "echo -e '\n' | ti calabash --platform ios"
         ].join("&&"),
         options: {
           execOptions: {
@@ -39,8 +39,8 @@ module.exports = function (grunt) {
       },
       cucumber_android: {
         command: [
-          "/Applications/Genymotion.app/Contents/MacOS/player --vm-name s4 &",
-          "ti calabash --platform android --device-id s4"
+          "/Applications/Genymotion.app/Contents/MacOS/player --vm-name s4",
+          "ti calabash --platform android --device-id s4 && kill %1"
         ].join("&"),
         options: {
           execOptions: {
