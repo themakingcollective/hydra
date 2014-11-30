@@ -4,32 +4,41 @@ var _ = require("underscore");
 
 module.exports = function (options) {
   var self = this;
-  var children = [];
+  var selection = self;
 
   options = options || {};
-
   self.label = options.label;
-  self.options = children;
+  self.children = [];
 
-  self.addOption = function (menu) {
-    children.push(menu);
-    menu.parent = self;
+  self.addOption = function (option) {
+    self.children.push(option);
+    option.parent = self;
+  };
+
+  self.options = function () {
+    return selection.children;
   };
 
   self.choose = function (child) {
-    var validOption;
-
-    _.each(self.options, function (c) {
-      if (_.isEqual(c, child) || c.label === child) {
-        self.options = c.options;
-        validOption = true;
-        return;
-      }
+    var option = _.detect(self.options(), function (c) {
+      return _.isEqual(c, child) || c.label === child;
     });
 
-    if (!validOption) {
+    if (option) {
+      selection = option;
+    }
+    else {
       var helpfulLabel = child.label || child;
       throw new Error("Invalid option: '" + helpfulLabel + "'");
+    }
+  };
+
+  self.back = function () {
+    if (selection.parent) {
+      selection = selection.parent;
+    }
+    else {
+      throw new Error("Nowhere to go back to");
     }
   };
 };

@@ -19,35 +19,30 @@ describe("Menu", function () {
   });
 
   describe("#addOption", function () {
-    it("adds a child to the parent", function () {
-      expect(subject.options).toEqual([foo, baz]);
-      expect(bar.options).toEqual([]);
-    });
-
-    it("sets the parent on the child", function () {
-      expect(subject.parent).toBeUndefined();
-      expect(foo.parent).toEqual(subject);
+    it("adds an option", function () {
+      expect(subject.options()).toEqual([foo, baz]);
+      expect(bar.options()).toEqual([]);
     });
   });
 
   describe("#options", function () {
-    it("returns an array of menu items", function () {
-      expect(subject.options).toEqual([foo, baz]);
+    it("returns an array of options", function () {
+      expect(subject.options()).toEqual([foo, baz]);
     });
   });
 
   describe("#choose", function () {
     it("changes the available options", function () {
       subject.choose(foo);
-      expect(subject.options).toEqual([bar]);
+      expect(subject.options()).toEqual([bar]);
 
       subject.choose(bar);
-      expect(subject.options).toEqual([]);
+      expect(subject.options()).toEqual([]);
     });
 
     it("supports choosing by label, rather than object", function () {
       subject.choose("foo");
-      expect(subject.options).toEqual([bar]);
+      expect(subject.options()).toEqual([bar]);
     });
 
     it("throws an error when choosing an invalid option", function () {
@@ -58,6 +53,21 @@ describe("Menu", function () {
       expect(function () {
         subject.choose("missing");
       }).toThrow(new Error("Invalid option: 'missing'"));
+    });
+  });
+
+  describe("#back", function () {
+    it("changes the available options", function () {
+      subject.choose(foo);
+      subject.back();
+
+      expect(subject.options()).toEqual([foo, baz]);
+    });
+
+    it("throws an error if there's nowhere to go back to", function () {
+      expect(function () {
+        subject.back();
+      }).toThrow(new Error("Nowhere to go back to"));
     });
   });
 });
