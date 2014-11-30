@@ -1,3 +1,7 @@
+Given(/^I have opened the app$/) do
+  # noop
+end
+
 When(/^I touch "(.*)"$/) do |id|
   touch(expression(id))
 end
