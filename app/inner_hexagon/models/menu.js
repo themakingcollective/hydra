@@ -41,4 +41,8 @@ module.exports = function (options) {
       throw new Error("Nowhere to go back to");
     }
   };
+
+  self.reset = function () {
+    selection = self;
+  };
 };

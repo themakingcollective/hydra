@@ -70,4 +70,14 @@ describe("Menu", function () {
       }).toThrow(new Error("Nowhere to go back to"));
     });
   });
+
+  describe("#reset", function () {
+    it("returns to the top-level of the menu", function () {
+      subject.choose(foo);
+      subject.choose(bar);
+      subject.reset();
+
+      expect(subject.options()).toEqual([foo, baz]);
+    });
+  });
 });
