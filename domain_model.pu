@@ -1,0 +1,58 @@
+@startuml
+
+hide circle
+hide empty fields
+hide empty methods
+
+package Concept {
+  class Image
+  class Symbol
+  class Entity
+  class Template
+  class Region
+}
+
+package Gameplay {
+  class Game
+  class Round
+  class Mode
+}
+
+package Feedback {
+  class Result
+  class OverallResult
+  class SingleResult
+  class Comparison
+}
+
+package Knowledge {
+  class Glossary
+  class Term
+}
+
+class Theme
+class Explanation
+class Demograph
+
+Image <|-- Symbol
+Glossary *--> Term
+Term --> Symbol
+Term --> Entity
+Symbol *--> "1" Template
+Symbol *--> Region
+Mode o--> Mode
+Game --> Mode
+Game *--> Round
+Round --> Symbol
+Result <|-- OverallResult
+Result <|-- SingleResult
+OverallResult --> Game
+SingleResult --> Round
+OverallResult o--> SingleResult
+Explanation --> Mode
+Demograph o--> Result
+Comparison --> Demograph
+Comparison --> Result
+Theme --> Mode
+
+@enduml
