@@ -11,17 +11,17 @@ describe("Menu", function () {
     foo = new Menu({ label: "foo" });
     bar = new Menu({ label: "bar" });
     baz = new Menu({ label: "baz" });
-    foo.addChild(bar);
+    foo.addOption(bar);
 
     subject = new Menu();
-    subject.addChild(foo);
-    subject.addChild(baz);
+    subject.addOption(foo);
+    subject.addOption(baz);
   });
 
-  describe("#addChild", function () {
+  describe("#addOption", function () {
     it("adds a child to the parent", function () {
-      expect(subject.children).toEqual([foo, baz]);
-      expect(bar.children).toEqual([]);
+      expect(subject.options).toEqual([foo, baz]);
+      expect(bar.options).toEqual([]);
     });
 
     it("sets the parent on the child", function () {

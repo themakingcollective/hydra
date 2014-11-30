@@ -4,15 +4,16 @@ var _ = require("underscore");
 
 module.exports = function (options) {
   var self = this;
+  var children = [];
+
   options = options || {};
 
   self.label = options.label;
-  self.children = [];
-  self.options = self.children;
+  self.options = children;
 
-  self.addChild = function (child) {
-    self.children.push(child);
-    child.parent = self;
+  self.addOption = function (menu) {
+    children.push(menu);
+    menu.parent = self;
   };
 
   self.choose = function (child) {
@@ -20,7 +21,7 @@ module.exports = function (options) {
 
     _.each(self.options, function (c) {
       if (_.isEqual(c, child) || c.label === child) {
-        self.options = c.children;
+        self.options = c.options;
         validOption = true;
         return;
       }
