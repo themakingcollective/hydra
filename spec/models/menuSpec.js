@@ -8,9 +8,9 @@ describe("Menu", function () {
   var subject, foo, bar, baz;
 
   beforeEach(function () {
-    foo = new Menu({ label: "foo" });
-    bar = new Menu({ label: "bar" });
-    baz = new Menu({ label: "baz" });
+    foo = new Menu({ id: "foo" });
+    bar = new Menu({ id: "bar" });
+    baz = new Menu({ id: "baz" });
     foo.addOption(bar);
 
     subject = new Menu();
@@ -40,7 +40,7 @@ describe("Menu", function () {
       expect(subject.options()).toEqual([]);
     });
 
-    it("supports choosing by label, rather than object", function () {
+    it("supports choosing by id, rather than object", function () {
       subject.choose("foo");
       expect(subject.options()).toEqual([bar]);
     });
@@ -78,6 +78,21 @@ describe("Menu", function () {
       subject.reset();
 
       expect(subject.options()).toEqual([foo, baz]);
+    });
+  });
+
+  describe("id", function () {
+    it("stores the id from the initializer", function () {
+      expect(foo.id).toEqual("foo");
+    });
+  });
+
+  describe("valueObject", function () {
+    it("stores the object from the initialiser", function () {
+      var menu = new Menu({ id: "menu", arbitrary: "data" });
+
+      expect(menu.valueObject.id).toEqual("menu");
+      expect(menu.valueObject.arbitrary).toEqual("data");
     });
   });
 });

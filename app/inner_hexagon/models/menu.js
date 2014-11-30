@@ -6,8 +6,8 @@ module.exports = function (options) {
   var self = this;
   var selection = self;
 
-  options = options || {};
-  self.label = options.label;
+  self.valueObject = options || {};
+  self.id = self.valueObject.id;
   self.children = [];
 
   self.addOption = function (option) {
@@ -21,15 +21,15 @@ module.exports = function (options) {
 
   self.choose = function (child) {
     var option = _.detect(self.options(), function (c) {
-      return _.isEqual(c, child) || c.label === child;
+      return _.isEqual(c, child) || c.id === child;
     });
 
     if (option) {
       selection = option;
     }
     else {
-      var helpfulLabel = child.label || child;
-      throw new Error("Invalid option: '" + helpfulLabel + "'");
+      var helpfulId = child.id || child;
+      throw new Error("Invalid option: '" + helpfulId + "'");
     }
   };
 
