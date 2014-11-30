@@ -1,8 +1,8 @@
 "use strict";
 
-var Model        = require("./inner_hexagon/model");
+var Model        = require("./inner_hexagon/models/base");
 var View         = require("./outer_hexagon/ports/view");
-var Controller   = require("./inner_hexagon/controller");
+var Controller   = require("./inner_hexagon/controllers/base");
 var MockView     = require("./outer_hexagon/adapters/mockView");
 var TitaniumView = require("./outer_hexagon/adapters/titaniumView");
 
