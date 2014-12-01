@@ -3,20 +3,44 @@
 var ActiveRecord = {};
 
 ActiveRecord.connect = function (Model, database) {
+  var newInstance = function (attributes) {
+    var instance = new Model();
+
+    _.each(attributes, function (value, key) {
+      instance[key] = value;
+    });
+
+    return instance;
+  };
+
+  var newInstances = function (attributesArray) {
+    return _.map(attributesArray, function (attributes) {
+      return newInstance(attributes);
+    });
+  };
+
   Model.find = function (id) {
-    return ActiveRecord.find(database, Model.tableName, id);
+    return newInstance(
+      ActiveRecord.find(database, Model.tableName, id)
+    );
   };
 
   Model.find_by = function (conditions) {
-    return ActiveRecord.find_by(database, Model.tableName, conditions);
+    return newInstance(
+      ActiveRecord.find_by(database, Model.tableName, conditions)
+    );
   };
 
   Model.where = function (conditions) {
-    return ActiveRecord.where(database, Model.tableName, conditions);
+    return newInstances(
+      ActiveRecord.where(database, Model.tableName, conditions)
+    );
   };
 
   Model.all = function () {
-    return ActiveRecord.all(database, Model.tableName);
+    return newInstances(
+      ActiveRecord.all(database, Model.tableName)
+    );
   };
 };
 
