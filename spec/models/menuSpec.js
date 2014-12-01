@@ -81,18 +81,12 @@ describe("Menu", function () {
     });
   });
 
-  describe("id", function () {
-    it("stores the id from the initializer", function () {
-      expect(foo.id).toEqual("foo");
-    });
-  });
+  describe("#valueObject", function () {
+    it("returns the object from the selection's initialiser", function () {
+      expect(subject.valueObject().id).toBeUndefined();
 
-  describe("valueObject", function () {
-    it("stores the object from the initialiser", function () {
-      var menu = new Menu({ id: "menu", arbitrary: "data" });
-
-      expect(menu.valueObject.id).toEqual("menu");
-      expect(menu.valueObject.arbitrary).toEqual("data");
+      subject.choose(foo);
+      expect(subject.valueObject().id).toEqual("foo");
     });
   });
 });

@@ -6,8 +6,8 @@ module.exports = function (options) {
   var self = this;
   var selection = self;
 
-  self.valueObject = options || {};
-  self.id = self.valueObject.id;
+  self.initOptions = options || {};
+  self.id = self.initOptions.id;
   self.children = [];
 
   self.addOption = function (option) {
@@ -44,5 +44,9 @@ module.exports = function (options) {
 
   self.reset = function () {
     selection = self;
+  };
+
+  self.valueObject = function () {
+    return selection.initOptions;
   };
 };
