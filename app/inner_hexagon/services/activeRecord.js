@@ -3,6 +3,10 @@
 var ActiveRecord = {};
 
 ActiveRecord.connect = function (Model, database) {
+  if (!Model.tableName) {
+    throw new Error("No table name set");
+  }
+
   var newInstance = function (attributes) {
     var instance = new Model();
 

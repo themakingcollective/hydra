@@ -24,5 +24,11 @@ describe("ActiveRecord", function () {
       expect(MyModel.where({ foo: "foo" })[0].something()).toEqual("foo");
       expect(MyModel.all()[0].something()).toEqual("foo");
     });
+
+    it("raises an error if there's no tableName on the model", function () {
+      expect(function () {
+        helpers.setupActiveRecord({});
+      }).toThrow(new Error("No table name set"));
+    });
   });
 });
