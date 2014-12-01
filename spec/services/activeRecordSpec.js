@@ -1,24 +1,13 @@
 "use strict";
 
-require("../specHelper");
-
-var ActiveRecord = require("../../app/inner_hexagon/services/activeRecord");
-var Database = require("../../app/outer_hexagon/ports/database");
-var MockDatabase = require("../../app/outer_hexagon/adapters/mockDatabase");
+helpers = require("../specHelper");
 
 describe("ActiveRecord", function () {
   var MyModel;
 
   beforeEach(function () {
-    var database = new Database();
-    var mockDatabase = new MockDatabase();
-
-    database.adapter = mockDatabase;
-    mockDatabase.port = database;
-
-    MyModel = { tableName: "test" };
-
-    ActiveRecord.connect(MyModel, database);
+    MyModel = { tableName : "test" };
+    helpers.setupActiveRecord(MyModel);
   });
 
   describe(".connect", function () {
