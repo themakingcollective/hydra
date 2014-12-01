@@ -19,6 +19,12 @@ ActiveRecord.connect = function (Model, database) {
     });
   };
 
+  Model.first = function () {
+    return newInstance(
+      ActiveRecord.first(database, Model.tableName)
+    );
+  };
+
   Model.find = function (id) {
     return newInstance(
       ActiveRecord.find(database, Model.tableName, id)
@@ -42,6 +48,10 @@ ActiveRecord.connect = function (Model, database) {
       ActiveRecord.all(database, Model.tableName)
     );
   };
+};
+
+ActiveRecord.first = function (database, table) {
+  return database.read(table, {})[0];
 };
 
 ActiveRecord.find = function (database, table, id) {
