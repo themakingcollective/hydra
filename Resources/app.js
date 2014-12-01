@@ -8,4 +8,3 @@ app.connectPort("view", view);
 app.connectPort("database", database);
 
 app.initialize();
-view.render();

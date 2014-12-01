@@ -2,43 +2,48 @@
 
 "use strict";
 
+var _ = require("../../vendor/underscore");
+
 module.exports = function () {
   var self = this;
+  var previousWindow;
 
-  var window = Ti.UI.createWindow({
-    backgroundColor: "white"
-  });
+  this.setMenu = function (menu) {
+    var window = Ti.UI.createWindow({
+      backgroundColor: "white",
+      layout: "vertical",
+      height: "100%"
+    });
 
-  var label = Ti.UI.createLabel({
-    color: "#900",
-    font: { fontSize:48 },
-    text: "",
-    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-    top: 30,
-    width: Ti.UI.SIZE, height: Ti.UI.SIZE,
-    accessibilityLabel: "someLabel"
-  });
+    _.each(menu.items, function (item) {
+      var button = Ti.UI.createButton({
+        title: item.title,
+        top: 20
+      });
 
-  var button = Ti.UI.createButton({
-    title: "Click me",
-    top: 10,
-    width: 100,
-    height: 50,
-    accessibilityLabel: "someButton"
-  });
+      button.addEventListener("touchstart", function () {
+        self.port.touchMenuItem(item.id);
+      });
 
-  button.addEventListener("touchstart", function () {
-    self.port.pressButton();
-  });
+      window.add(button);
+    });
 
-  window.add(label);
-  window.add(button);
+    var menuButton = Ti.UI.createButton({
+      title: "menu",
+      top: 20
+    });
 
-  this.setText = function (text) {
-    label.setText(text);
-  };
+    menuButton.addEventListener("touchstart", function () {
+      self.port.touchMenu();
+    });
 
-  this.render = function () {
+    window.add(menuButton);
+
     window.open();
+
+    if (previousWindow) {
+      previousWindow.close();
+    }
+    previousWindow = window;
   };
 };

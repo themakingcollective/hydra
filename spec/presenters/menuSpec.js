@@ -9,6 +9,7 @@ describe("MenuPresenter", function () {
 
   beforeEach(function () {
     var fooMode = new Mode();
+    fooMode.id = "fooId";
     fooMode.name = "foo";
     var fooMenu = new Menu(fooMode);
 
@@ -20,7 +21,8 @@ describe("MenuPresenter", function () {
     subject = new MenuPresenter(fooMenu);
   });
 
-  it("contains a title", function () {
+  it("contains some properties", function () {
+    expect(subject.id).toEqual("fooId");
     expect(subject.title).toEqual("foo");
   });
 
