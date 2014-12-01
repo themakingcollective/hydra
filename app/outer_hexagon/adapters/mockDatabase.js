@@ -4,19 +4,20 @@ var _ = require("underscore");
 
 module.exports = function () {
   var data = {
-    modes: [
+    test: [
       {
         id: 1,
-        name: "build"
-      },
-      {
-        id: 2,
-        name: "guess"
+        foo: "foo"
       }
     ]
   };
 
   this.read = function (table, conditions) {
-    return _.where(data[table], conditions);
+    if (data[table]) {
+      return _.where(data[table], conditions);
+    }
+    else {
+      throw new Error("Table '" + table + "' does not exist");
+    }
   };
 };
