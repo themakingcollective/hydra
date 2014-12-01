@@ -1,6 +1,6 @@
 "use strict";
 
-global._          = require("underscore");
+global._          = require("../app/vendor/underscore");
 global.Hydra      = require("../app/hydra");
 global.feature    = describe;
 global.context    = describe;

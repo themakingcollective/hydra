@@ -1,6 +1,6 @@
 "use strict";
 
-var _ = require("underscore");
+var _ = require("../../vendor/underscore");
 var Menu = require("../models/menu");
 
 module.exports.build = function (Mode) {

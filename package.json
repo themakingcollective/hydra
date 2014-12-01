@@ -4,7 +4,6 @@
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-jasmine-node": "^0.2.1",
-    "grunt-shell": "^1.1.1",
-    "underscore": "^1.7.0"
+    "grunt-shell": "^1.1.1"
   }
 }

@@ -1,6 +1,6 @@
+/* global _ */
 "use strict";
 
-var _ = require("underscore");
 var helpers     = require("../specHelper");
 var MenuBuilder = require("../../app/inner_hexagon/services/menuBuilder");
 var Mode        = require("../../app/inner_hexagon/models/mode");

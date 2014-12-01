@@ -1,6 +1,6 @@
 "use strict";
 
-var _ = require("underscore");
+var _ = require("../../vendor/underscore");
 
 var MenuPresenter = function (menu) {
   var mode = menu.valueObject();
