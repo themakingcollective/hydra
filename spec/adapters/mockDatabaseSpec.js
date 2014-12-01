@@ -28,6 +28,11 @@ describe("MockDatabase", function () {
       expect(results.length).toEqual(0);
     });
 
+    it("supports undefined conditionals", function () {
+      var results = subject.read("test", { missing: undefined });
+      expect(results.length).toEqual(1);
+    });
+
     it("throws an error if the table doesn't exist", function () {
       expect(function () {
         subject.read("missing");

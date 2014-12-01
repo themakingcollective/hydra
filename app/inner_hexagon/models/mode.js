@@ -1,20 +1,19 @@
 "use strict";
 
-module.exports = function (options) {
-  var self = this;
+var Mode = function (options) {
+  this.children = function () {
+    return Mode.where({ parentId: this.id });
+  };
 
-  self.id = options.id;
-  self.name = options.name;
-  self.image = options.image;
-  self.intro = options.intro;
-  self.color = options.color;
-  self.icon = options.icon;
-  self.info = options.info;
-
-  self.children = [];
-
-  self.addChild = function (child) {
-    self.children.push(child);
-    child.parent = self;
+  this.parent = function () {
+    return Mode.find(this.parentId);
   };
 };
+
+Mode.tableName = "modes";
+
+Mode.topLevel = function () {
+  return Mode.where({ parentId: undefined });
+};
+
+module.exports = Mode;

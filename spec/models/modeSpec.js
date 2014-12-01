@@ -1,44 +1,32 @@
 "use strict";
 
-require("../specHelper");
-
+var helpers = require("../specHelper");
 var Mode = require("../../app/inner_hexagon/models/mode");
 
 describe("Mode", function () {
-  var subject, child;
+  var subject;
 
   beforeEach(function () {
-    subject = new Mode({
-      id:    "id",
-      name:  "name",
-      image: "image",
-      intro: "intro",
-      color: "color",
-      icon:  "icon",
-      info:  "info"
-    });
-
-    child = new Mode({ id: "child" });
-    subject.addChild(child);
+    helpers.setupActiveRecord(Mode);
+    subject = Mode.first();
   });
 
   it("stores attributes", function () {
-    expect(subject.id).toEqual("id");
-    expect(subject.name).toEqual("name");
-    expect(subject.image).toEqual("image");
-    expect(subject.intro).toEqual("intro");
-    expect(subject.color).toEqual("color");
-    expect(subject.icon).toEqual("icon");
-    expect(subject.info).toEqual("info");
+    expect(subject.id).toEqual(1);
+    expect(subject.name).toEqual("build");
   });
 
-  describe("#addChild", function () {
-    it("adds a child", function () {
-      expect(subject.children).toEqual([child]);
-    });
+  it("has a parent / child relationship", function () {
+    var child = subject.children()[0];
+    expect(child.parent().id).toEqual(1);
+  });
 
-    it("sets the parent of the child", function () {
-      expect(child.parent).toEqual(subject);
+  describe(".topLevel", function () {
+    it("returns an array of modes without parents", function () {
+      var modes = Mode.topLevel();
+
+      expect(modes[0].name).toEqual("build");
+      expect(modes[1].name).toEqual("guess");
     });
   });
 });

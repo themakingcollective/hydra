@@ -1,40 +1,33 @@
 "use strict";
 
-require("../specHelper");
-
+var helpers     = require("../specHelper");
 var MenuBuilder = require("../../app/inner_hexagon/services/menuBuilder");
-var Mode = require("../../app/inner_hexagon/models/mode");
+var Mode        = require("../../app/inner_hexagon/models/mode");
 
 describe("MenuBuilder", function () {
-  var subject, foo, bar, baz;
+  var subject;
 
-  var subjectModes = function () {
+  var modeNames = function () {
     return _.map(subject.options(), function (menu) {
-      return menu.valueObject();
+      return menu.valueObject().name;
     });
   };
 
   beforeEach(function () {
-    foo = new Mode({ id: "foo" });
-    bar = new Mode({ id: "bar" });
-    baz = new Mode({ id: "baz" });
-
-    foo.addChild(bar);
-
-    subject = MenuBuilder.build([foo, baz]);
+    helpers.setupActiveRecord(Mode);
+    subject = MenuBuilder.build(Mode);
   });
 
   it("builds a menu from an array of modes", function () {
-    expect(subjectModes()).toEqual([foo, baz]);
+    expect(modeNames()).toEqual(["build", "guess"]);
 
-    subject.choose("foo");
-    expect(subjectModes()).toEqual([bar]);
+    subject.choose(1);
+    expect(modeNames()).toEqual(["colours", "patterns + colours"]);
 
-    subject.choose("bar");
-    expect(subjectModes()).toEqual([]);
+    subject.choose(3);
+    expect(modeNames()).toEqual([]);
 
     subject.reset();
-    subject.choose("baz");
-    expect(subjectModes()).toEqual([]);
+    expect(modeNames()).toEqual(["build", "guess"]);
   });
 });
