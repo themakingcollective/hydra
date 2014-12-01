@@ -24,7 +24,7 @@ describe("MockDatabase", function () {
       expect(results.length).toEqual(1);
       expect(results[0].id).toEqual(1);
 
-      var results = subject.read("test", { foo: "missing" });
+      results = subject.read("test", { foo: "missing" });
       expect(results.length).toEqual(0);
     });
 

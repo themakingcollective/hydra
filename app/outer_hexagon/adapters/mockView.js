@@ -1,13 +1,15 @@
 "use strict";
 
 module.exports = function () {
-  this.text = "";
-
-  this.pressButton = function () {
-    this.port.pressButton();
+  this.setMenu = function (menu) {
+    this.menu = menu;
   };
 
-  this.setText = function (text) {
-    this.text = text;
+  this.touchMenuItem = function (id) {
+    this.port.touchMenuItem(id);
+  };
+
+  this.touchMenu = function () {
+    this.port.touchMenu();
   };
 };

@@ -1,6 +1,6 @@
 "use strict";
 
-var Mode = function (options) {
+var Mode = function () {
   this.children = function () {
     return Mode.where({ parentId: this.id });
   };

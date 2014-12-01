@@ -74,7 +74,6 @@
   "maxerr"               : 50,
   "maxparams"            : 3,
   "maxdepth"             : 3,
-  "maxstatements"        : 10,
   "maxcomplexity"        : 6,
   "maxlen"               : 80,
   "indent"               : 2

@@ -1,11 +1,15 @@
 "use strict";
 
 module.exports = function () {
-  this.pressButton = function () {
-    this.controller.someAction();
+  this.setMenu = function (menu) {
+    this.adapter.setMenu(menu);
   };
 
-  this.setText = function (text) {
-    this.adapter.setText(text);
+  this.touchMenuItem = function (id) {
+    this.controller.touchMenuItem(id);
+  };
+
+  this.touchMenu = function () {
+    this.controller.touchMenu();
   };
 };

@@ -1,5 +1,6 @@
 "use strict";
 
+var _ = require("underscore");
 var ActiveRecord = {};
 
 ActiveRecord.connect = function (Model, database) {
@@ -35,9 +36,9 @@ ActiveRecord.connect = function (Model, database) {
     );
   };
 
-  Model.find_by = function (conditions) {
+  Model.findBy = function (conditions) {
     return newInstance(
-      ActiveRecord.find_by(database, Model.tableName, conditions)
+      ActiveRecord.findBy(database, Model.tableName, conditions)
     );
   };
 
@@ -62,7 +63,7 @@ ActiveRecord.find = function (database, table, id) {
   return database.read(table, { id: id })[0];
 };
 
-ActiveRecord.find_by = function (database, table, conditions) {
+ActiveRecord.findBy = function (database, table, conditions) {
   return database.read(table, conditions)[0];
 };
 

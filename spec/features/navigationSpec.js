@@ -10,26 +10,22 @@ feature("Navigation", function () {
   });
 
   scenario("Navigating the menu", function () {
-    expect(view.menuItems.length).toEqual(2);
-    expect(view.menuItems[0].text).toEqual("mode1");
-    expect(view.menuItems[1].text).toEqual("mode2");
+    expect(view.menu.title).toBeUndefined();
+    expect(view.menu.items[0].title).toEqual("build");
+    expect(view.menu.items[1].title).toEqual("guess");
 
-    view.touch("menuItem1");
-    expect(view.title).toEqual("mode1");
-    expect(view.menuItems.length).toEqual(2);
-    expect(view.menuItems[0].text).toEqual("mode11");
-    expect(view.menuItems[1].text).toEqual("mode22");
+    view.touchMenuItem("build");
+    expect(view.menu.title).toEqual("build");
+    expect(view.menu.items[0].title).toEqual("colours");
+    expect(view.menu.items[1].title).toEqual("patterns + colours");
 
-    view.touch("menu");
-    // TODO: Then I should be on the start screen
+    view.touchMenu();
+    expect(view.menu.title).toBeUndefined();
 
-    view.touch("menuItem2");
-    expect(view.title).toEqual("mode2");
-    expect(view.menuItems.length).toEqual(3);
-    expect(view.menuItems[0].text).toEqual("mode21");
-    expect(view.menuItems[1].text).toEqual("mode22");
-    expect(view.menuItems[2].text).toEqual("mode23");
+    view.touchMenuItem("guess");
+    expect(view.menu.title).toEqual("guess");
+    expect(view.menu.items[0].title).toEqual("which flag?");
+    expect(view.menu.items[1].title).toEqual("which country?");
+    expect(view.menu.items[2].title).toEqual("view all flags");
   });
-
 });
-

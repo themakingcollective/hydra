@@ -1,17 +1,15 @@
 "use strict";
 
-module.exports = function () {
-  this.text = "";
-  var count = 0;
+var ActiveRecord = require("../services/activeRecord");
+var Mode         = require("./mode");
+var MenuBuilder  = require("../services/menuBuilder");
 
-  this.someMethod = function () {
-    count += 1;
+module.exports = function (database) {
+  var self = this;
 
-    if (count === 1) {
-      this.text = "Hello, world";
-    }
-    else {
-      this.text = count + " times";
-    }
+  ActiveRecord.connect(Mode, database);
+
+  self.initialize = function () {
+    self.menu = MenuBuilder.build(Mode);
   };
 };

@@ -1,10 +1,27 @@
 "use strict";
 
-module.exports = function (model, view) {
-  view.controller = this;
+var MenuPresenter = require("../presenters/menu");
 
-  this.someAction = function () {
-    model.someMethod();
-    view.setText(model.text);
+module.exports = function (model, view) {
+  var self = this;
+  view.controller = self;
+
+  self.initialize = function () {
+    model.initialize();
+    setMenu();
+  };
+
+  self.touchMenuItem = function (id) {
+    model.menu.choose(id);
+    setMenu();
+  };
+
+  self.touchMenu = function () {
+    model.menu.reset();
+    setMenu();
+  };
+
+  var setMenu = function () {
+    view.setMenu(new MenuPresenter(model.menu));
   };
 };

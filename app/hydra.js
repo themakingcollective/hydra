@@ -26,6 +26,10 @@ module.exports = function () {
     adapter.port = port;
     port.adapter = adapter;
   };
+
+  this.initialize = function () {
+    controller.initialize();
+  };
 };
 
 module.exports.Adapters = {

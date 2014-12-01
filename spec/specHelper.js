@@ -19,6 +19,8 @@ module.exports.setupApplication = function () {
   app.connectPort("view", view);
   app.connectPort("database", database);
 
+  app.initialize();
+
   return view;
 };
 
