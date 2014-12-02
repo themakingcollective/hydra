@@ -11,6 +11,10 @@ Then(/^"(.*)" should display "(.*)"$/) do |id, text|
   assert_equal(text, element["text"])
 end
 
+Then(/^I should see "(.*)"$/) do |id|
+  check_element_exists(expression(id))
+end
+
 When(/^I debug$/) do
   require "pry"
   binding.pry
