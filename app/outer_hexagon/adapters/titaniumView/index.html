@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="reset.css">
+
+    <style>
+      canvas {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+    </style>
+
+    <script>
+      document.body.addEventListener('touchmove', function(event) {
+        event.preventDefault();
+      })
+    </script>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script src="bundle.js"></script>
+  </body>
+</html>

@@ -49,6 +49,24 @@ module.exports = function () {
 
     window.add(menuButton);
 
+    var url;
+    if (Ti.Platform.osname == "android") {
+      url = "titaniumView/index.html";
+    }
+    else {
+      url = "app/outer_hexagon/adapters/titaniumView/index.html";
+    }
+
+    var webView = Ti.UI.createWebView({
+      url: url,
+      disableBounce: true,
+      showScrollbars: false,
+      width: 280,
+      height: 186
+    });
+
+    window.add(webView);
+
     window.open();
 
     if (previousWindow) {

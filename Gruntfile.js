@@ -6,6 +6,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-jasmine-node");
   grunt.loadNpmTasks("grunt-shell");
 
+  var browserify = [
+    "browserify app/outer_hexagon/adapters/titaniumView/main.js",
+    "app/outer_hexagon/adapters/titaniumView/bundle.js"
+  ].join(" > ");
+
   grunt.initConfig({
     jshint: {
       all: [
@@ -27,6 +32,7 @@ module.exports = function (grunt) {
       // TODO: cucumber colours
       cucumber_ios: {
         command: [
+          browserify,
           "rm -rf build",
           "ti build --platform ios s --build-only",
           "echo -e '\n' | ti calabash --platform ios"
@@ -39,6 +45,7 @@ module.exports = function (grunt) {
       },
       cucumber_android: {
         command: [
+          browserify,
           "/Applications/Genymotion.app/Contents/MacOS/player --vm-name s4",
           "ti calabash --platform android --device-id s4 && kill %1"
         ].join("&"),
@@ -47,6 +54,9 @@ module.exports = function (grunt) {
             maxBuffer: 10000 * 1024
           }
         }
+      },
+      browserify: {
+        command: browserify
       }
     }
   });
@@ -54,6 +64,7 @@ module.exports = function (grunt) {
   grunt.registerTask("default", [
     "jasmine_node",
     "jshint",
+    "shell:browserify",
     "shell:cucumber_android",
     "shell:cucumber_ios"
   ]);
