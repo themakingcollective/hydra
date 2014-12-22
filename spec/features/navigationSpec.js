@@ -19,8 +19,13 @@ feature("Navigation", function () {
     expect(view.menu.items[0].title).toEqual("colours");
     expect(view.menu.items[1].title).toEqual("patterns + colours");
 
+    view.touchMenuItem("colours");
+    expect(view.menu.title).toEqual("colours");
+
     view.touchMenu();
     expect(view.menu.title).toBeUndefined();
+    expect(view.menu.items[0].title).toEqual("build");
+    expect(view.menu.items[1].title).toEqual("guess");
 
     view.touchMenuItem("guess");
     expect(view.menu.title).toEqual("guess");

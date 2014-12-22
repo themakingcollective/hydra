@@ -2,7 +2,8 @@ Feature: Navigation
 
   Scenario: Navigating the menu
     Given I have opened the app
-    Then I should see "buildMenuItem"
+    Then I should not see "title"
+    And I should see "buildMenuItem"
     And I should see "guessMenuItem"
 
     When I touch "buildMenuItem"
@@ -10,8 +11,12 @@ Feature: Navigation
     And I should see "coloursMenuItem"
     And I should see "patternsMenuItem"
 
+    When I touch "coloursMenuItem"
+    Then "title" should display "colours"
+
     When I touch "menu"
-    Then I should see "buildMenuItem"
+    Then I should not see "title"
+    And I should see "buildMenuItem"
     And I should see "guessMenuItem"
 
     When I touch "guessMenuItem"
