@@ -2,15 +2,27 @@
 
 "use strict";
 
-var _ = require("../../vendor/underscore");
+var _        = require("../../vendor/underscore");
+var Animator = require("./titaniumView/animator");
 
 module.exports = function () {
   var self = this;
   var previousWindow;
 
+  var color;
+  var toggleColor = true;
+
   this.setMenu = function (menu) {
+    if (toggleColor) {
+      color = "#FFFF99";
+    }
+    else {
+      color = "#FFFFFF";
+    }
+    toggleColor = !toggleColor;
+
     var window = Ti.UI.createWindow({
-      backgroundColor: "white",
+      backgroundColor: color,
       layout: "vertical",
       height: "100%"
     });
@@ -68,11 +80,7 @@ module.exports = function () {
 
     window.add(webView);
 
-    window.open();
-
-    if (previousWindow) {
-      previousWindow.close();
-    }
+    Animator.slideLeft(window, previousWindow);
     previousWindow = window;
   };
 };
