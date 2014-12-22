@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = function (menu, port) {
-  var view = Titanium.UI.createView({
+  var view = Ti.UI.createView({
     backgroundColor: "#FFFF00",
     width: "100%",
     height: 44

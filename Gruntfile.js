@@ -6,10 +6,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-jasmine-node");
   grunt.loadNpmTasks("grunt-shell");
 
-  var browserify = [
-    "browserify app/outer_hexagon/adapters/titaniumView/symbolView/main.js",
-    "app/outer_hexagon/adapters/titaniumView/symbolView/bundle.js"
-  ].join(" > ");
+  var dir = "app/outer_hexagon/adapters/titaniumView/navigationView/symbolView";
+  var browserify = "browserify " + dir + "/main.js > " + dir + "/bundle.js";
 
   grunt.initConfig({
     jshint: {

@@ -1,13 +1,10 @@
 "use strict";
 
 module.exports = function () {
-  var url;
+  var url = "symbolView/index.html";
 
-  if (Ti.Platform.osname == "android") {
-    url = "symbolView/index.html";
-  }
-  else {
-    url = "app/outer_hexagon/adapters/titaniumView/symbolView/index.html";
+  if (Ti.Platform.osname !== "android") {
+    url = "app/outer_hexagon/adapters/titaniumView/navigationView/" + url;
   }
 
   var webView = Ti.UI.createWebView({

@@ -1,6 +1,7 @@
 {
   "globals" : {
     "Hydra":      true,
+    "Ti":         true,
     "feature":    true,
     "context":    true,
     "background": true,

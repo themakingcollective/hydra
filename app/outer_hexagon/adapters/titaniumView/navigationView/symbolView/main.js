@@ -1,5 +1,9 @@
 // To regenerate, run: grunt shell:browserify
 
+/* global window */
+/* global document */
+"use strict";
+
 var RegionedImage = require("regioned-image");
 
 var image = new RegionedImage("France.svg", {
@@ -7,8 +11,9 @@ var image = new RegionedImage("France.svg", {
   height: window.innerHeight
 });
 
+var canvas = document.getElementById("canvas");
+
 image.onload = function () {
-  var canvas = document.getElementById("canvas");
   image.render(canvas);
 };
 
