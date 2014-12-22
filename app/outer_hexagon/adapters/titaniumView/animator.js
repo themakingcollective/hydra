@@ -37,9 +37,11 @@ Animator.android.slideLeft = function (window, previousWindow) {
   }
 };
 
-if (Ti.Platform.osname === "android") {
-  module.exports = Animator.android;
-}
-else {
-  module.exports = Animator.ios;
+if (typeof Ti !== "undefined") {
+  if (Ti.Platform.osname === "android") {
+    module.exports = Animator.android;
+  }
+  else {
+    module.exports = Animator.ios;
+  }
 }
