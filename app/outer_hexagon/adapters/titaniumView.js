@@ -2,11 +2,13 @@
 
 "use strict";
 
-var _        = require("../../vendor/underscore");
-var Animator = require("./titaniumView/animator");
+var _          = require("../../vendor/underscore");
+var Animator   = require("./titaniumView/animator");
+var SymbolView = require("./titaniumView/symbolView");
 
 module.exports = function () {
   var self = this;
+
   var previousWindow;
 
   var color;
@@ -61,24 +63,8 @@ module.exports = function () {
 
     window.add(menuButton);
 
-    var url;
-    if (Ti.Platform.osname == "android") {
-      url = "titaniumView/index.html";
-    }
-    else {
-      url = "app/outer_hexagon/adapters/titaniumView/index.html";
-    }
-
-    var webView = Ti.UI.createWebView({
-      url: url,
-      disableBounce: true,
-      showScrollbars: false,
-      enableZoomControls: false,
-      width: 280,
-      height: 186
-    });
-
-    window.add(webView);
+    var symbolView = new SymbolView();
+    window.add(symbolView);
 
     Animator.slideLeft(window, previousWindow);
     previousWindow = window;

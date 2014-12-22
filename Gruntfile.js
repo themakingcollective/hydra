@@ -7,8 +7,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-shell");
 
   var browserify = [
-    "browserify app/outer_hexagon/adapters/titaniumView/main.js",
-    "app/outer_hexagon/adapters/titaniumView/bundle.js"
+    "browserify app/outer_hexagon/adapters/titaniumView/symbolView/main.js",
+    "app/outer_hexagon/adapters/titaniumView/symbolView/bundle.js"
   ].join(" > ");
 
   grunt.initConfig({
