@@ -6,7 +6,7 @@
 	<publisher>not specified</publisher>
 	<url>themakingcollective.com</url>
 	<description></description>
-	<copyright>not specified</copyright>
+	<copyright>2014, The Making Collective</copyright>
 	<icon>appicon.png</icon>
 	<fullscreen>false</fullscreen>
 	<navbar-hidden>false</navbar-hidden>
@@ -16,29 +16,48 @@
 	<ios>
 		<plist>
 			<dict>
-				<key>UISupportedInterfaceOrientations~iphone</key>
+				<key>UISupportedInterfaceOrientations</key>
 				<array>
 					<string>UIInterfaceOrientationPortrait</string>
-				</array>
-				<key>UISupportedInterfaceOrientations~ipad</key>
-				<array>
-					<string>UIInterfaceOrientationPortrait</string>
-					<string>UIInterfaceOrientationPortraitUpsideDown</string>
-					<string>UIInterfaceOrientationLandscapeLeft</string>
-					<string>UIInterfaceOrientationLandscapeRight</string>
 				</array>
 				<key>UIRequiresPersistentWiFi</key>
 				<false/>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 				<key>UIStatusBarHidden</key>
-				<false/>
+				<true/>
 				<key>UIStatusBarStyle</key>
 				<string>UIStatusBarStyleDefault</string>
 			</dict>
 		</plist>
 	</ios>
+  <!-- http://stackoverflow.com/questions/13015505/titanium-disable-device-rotation-fix-so-only-one-mode-ever-shown -->
 	<android xmlns:android="http://schemas.android.com/apk/res/android">
+    <manifest>
+      <application android:theme="@style/Theme.AppCompat.Fullscreen">
+        <activity
+          android:configChanges="keyboardHidden|orientation"
+          android:name="org.appcelerator.titanium.TiActivity"
+          android:screenOrientation="portrait"/>
+        <activity
+          android:configChanges="keyboardHidden|orientation"
+          android:name="org.appcelerator.titanium.TiTranslucentActivity"
+          android:screenOrientation="portrait"
+          android:theme="@android:style/Theme.Translucent"/>
+        <activity
+          android:configChanges="keyboardHidden|orientation"
+          android:name="org.appcelerator.titanium.TiModalActivity"
+          android:screenOrientation="portrait"
+          android:theme="@android:style/Theme.Translucent"/>
+        <activity
+          android:configChanges="keyboardHidden|orientation"
+          android:name="ti.modules.titanium.ui.TiTabActivity"
+          android:screenOrientation="portrait"/>
+        <activity
+          android:name="ti.modules.titanium.ui.android.TiPreferencesActivity"
+          android:screenOrientation="portrait"/>
+      </application>
+    </manifest>
 	</android>
 	<mobileweb>
 		<precache>

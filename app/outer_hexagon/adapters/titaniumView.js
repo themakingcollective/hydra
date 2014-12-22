@@ -61,6 +61,7 @@ module.exports = function () {
       url: url,
       disableBounce: true,
       showScrollbars: false,
+      enableZoomControls: false,
       width: 280,
       height: 186
     });

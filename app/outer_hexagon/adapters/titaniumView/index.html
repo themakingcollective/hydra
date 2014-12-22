@@ -10,9 +10,10 @@
     </style>
 
     <script>
-      document.body.addEventListener('touchmove', function(event) {
+      document.ontouchmove = function(event) {
         event.preventDefault();
-      })
+        return false;
+      }
     </script>
   </head>
   <body>
