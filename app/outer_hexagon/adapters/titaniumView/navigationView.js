@@ -12,7 +12,9 @@ module.exports = function (menu, port) {
   });
 
   var navigationBarView = new NavigationBarView(menu, port);
-  window.add(navigationBarView);
+  if (menu.title) {
+    window.add(navigationBarView);
+  }
 
   _.each(menu.items, function (item) {
     var button = Ti.UI.createButton({
